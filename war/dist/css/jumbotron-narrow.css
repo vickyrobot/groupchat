@@ -1,0 +1,41 @@
+
+
+
+
+.leftdiv
+{
+	border: 1px solid rgb(225, 225, 232);
+    width:25%;
+    height:750px;
+    margin-top:80px;
+    border-radius:10px;
+    overflow-x:hidden;
+    overflow-y:hidden; 
+
+}
+.contactlist
+{
+	  overflow: auto;
+	 max-height:750px;
+	 min-height:750px;
+	 width:auto;
+	 margin-top: 6px;
+}
+.buttn
+{
+	margin-left: 100px; margin-top: 10px;
+	
+}
+.Selected
+{
+	background-color:	#73A9D7;
+}
+.deSelected
+{
+	color:light red;
+}
+.chatdiv
+{
+	border: 1px solid rgb(225, 225, 232);
+	width:60%;
+}

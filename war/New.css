@@ -1,0 +1,49 @@
+@CHARSET "ISO-8859-1";
+
+.divborder
+{
+		border: 1px solid rgb(225, 225, 232);
+		height:750px;
+		top: 30px;
+		padding-left: 0px;
+		padding-right: 0px;
+		
+}
+.txtarea
+{
+	margin-left: 125px;
+  border: 2px solid rgb(225, 225, 232);
+	top: 500px;
+	
+}
+.Selected
+{
+	background-color:	#73A9D7;
+}
+
+.tabcontent
+{
+	padding-right: 0px;
+    height: 631px; 
+    overflow:auto;
+	overflow-x:hidden;
+	width:97%;
+}
+.done
+{
+	margin-left: 130px;
+	margin-top:20px;
+
+	margin-bottom:20px;
+	
+}
+.chatdiv
+{
+    position: inherit;
+	/* margin: 16px; */
+	margin-top: 100px;
+	height: 600px;
+	margin-bottom: 20px;
+	margin-left: 45px;
+	margin-right: 45px;
+}

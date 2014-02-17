@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html ng-app="chatApp">
+<head>
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+<title>Group Chat</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/New.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+
+<script src="ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+<script src="http://staging.webchat.a-cti.com/pages/SBIntegrated/RoutingClient.js">
+
+
+
+</script>
+
+<script src="new.js"></script>
+
+
+<title>Chat</title>
+
+
+
+
+</head>
+
+<body>
+
+	<div class="container" ng-controller="contactctrl">
+		<div class="row">
+			<div class="header">
+				<ul class="nav nav-pills pull-right">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+
+
+
+			</div>
+			<!-- class=header -->
+
+		</div>
+		<div class="row">
+			<div class="col-md-4 divborder ">
+
+				<tabset>
+				
+				    <tab heading="Group">
+
+				    <div class="col-md-12 tabcontent" ng-controller="contactctrl2">
+
+					<!--buttons for show and hide  -->
+
+					<!-- groups list -->
+					<div style="margin-top: 10px;">
+						<div>
+							<label class="checkbox" ng-show="showGroup"> <input
+								type="checkbox" ng-model="oneAtATime"> Open only one at
+								a time
+							</label>
+
+							<accordion close-others="oneAtATime" ng-show="showGroup">
+							<div ng-repeat="group in groups">
+
+								<accordion-group heading="{{group.groupName}}" ng-click="groupclicked(group.groupName)">
+								<p>Members</p>
+
+								<small ng-repeat="names in group.members track by $index ">{{names+","}}</small>
+								<button class="btn btn-default btn-sm"
+									ng-click="addMember(group.groupName)">Add Members</button>
+
+								</accordion-group>
+
+							</div>
+							</accordion>
+
+
+						</div>
+
+
+
+						<div class="contactlist" ng-show="showContactList">
+							<div class="col-xs-12"><label> search:</label><input type="text" ng-model="searchContact" autofocus /></div>
+							
+							<div class="col-xs-12"><label>GroupName:</label><input type="text" ng-model="groupTitle"/></div>
+								<div class="contactlist" ng-show="showNameInput">
+									<button class="btn btn-primary btn-sm" ng-click="createGroup()">finish</button>
+								</div>
+
+							<div class="list-group-item"
+								ng-repeat="people in contacts| filter:searchContact"
+								ng-class="{Selected: item.checked}">
+								<div ng-click="createMember(people.email)">
+								
+									<input type="checkbox" ng-model="item.checked">{{people.email}}
+								</div>
+
+							</div>
+
+						</div>
+
+
+						
+
+						<!--make group button  -->
+						<div ng-show="showMakeGroup">
+							<button type="button" class="btn btn-primary done"
+								ng-click="showContacts()">makeGroup</button>
+						</div>
+
+					</div>
+
+
+
+				</div>
+				</tab>
+				 <tab heading="Contacts">
+				<button class="btn btn-primary done">done</button>
+				<div class="row">
+					<div class="col-xs-12 tabcontent ">
+						<div class="list-group-item" ng-class="{Selected: item.checked}"
+							ng-repeat="people in contacts">
+							<div ng-click="createMember(people.email)">
+								<input type="checkbox" ng-model="item.checked">
+								{{people.email}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				</tab> 
+				
+				</tabset>
+
+			</div>
+
+
+
+			<div class="col-md-8 divborder" >
+
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-7 divborder chatdiv" >
+						<div ng-repeat="things in data" ><span>{{things.data.xyz}}</span>:{{things.data.abc}}</div>
+		
+						<textarea class="col-md-7 txtarea" rows="3" ng-model="msgdata" ></textarea>
+						<button class="btn btn-primary" style="margin-top: 540px;margin-left: 60px;" ng-click="hi()">send</button>
+						
+						<button ng-click="getContactsJson()"> json</button>
+						
+						</div>
+
+
+
+
+					</div>
+
+
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>

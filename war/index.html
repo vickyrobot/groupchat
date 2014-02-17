@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chatApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Group Chat</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/dist/css/jumbotron-narrow.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.js"></script>
+
+      
+   <script src="ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+  
+  <script src="chatApp.js"></script>
+  
+  </head>
+
+  <body>
+
+    <div class="container" >
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        
+       
+        
+        </div><!-- class=header -->
+
+
+
+<div class=".col-xs-6 leftdiv" >
+<tabset>
+    <tab heading="Contacts">
+    <button class="btn btn-primary " style="margin-left: 100px; margin-top: 10px;">done</button>	<br>
+    <div class="contactlist " >
+							
+			<div  class="list-group-item"  ng-class="{Selected: item.checked}" ng-repeat="people in contacts">
+			<div ng-click="createMember(people.email)" > <input type="checkbox" ng-model="item.checked"> {{people.email}}</div>
+			 			
+		    </div>
+
+	</div>
+	
+    </tab>
+    <tab  heading="Group" active="tab.active" disabled="tab.disabled">
+     
+     
+		
+     </tab>
+     <div id="totalcontent">
+
+			<!--buttons for show and hide  -->
+
+			
+		
+			
+			<!-- groups list -->
+						<div ng-controller="contactctrl" >
+						
+								<label class="checkbox"  ng-show="showGroup"> <input type="checkbox"
+									ng-model="oneAtATime"> Open only one at a time
+								</label>
+
+								<accordion close-others="oneAtATime" ng-show="showGroup">
+								        <div ng-repeat="group in groups">
+								
+									    <accordion-group heading="{{group.groupName}}">
+									    <p>Members</p>
+
+									    <small ng-repeat="names in group.members track by $index ">{{names+","}}</small>
+								    	<button class="btn btn-default btn-sm" ng-click="addMember(group.groupName)">Add
+										Members</button>
+
+									   </accordion-group>
+
+								       </div>
+							   </accordion>
+
+
+						
+
+
+
+							<div class="contactlist" ng-show="showContactList">
+								search:<input type="text" ng-model="searchContact" autofocus />
+				
+				<!-- 			</div>
+				
+							showing list of contacts
+							<div  ng-show="showContactList" > -->
+								
+								<div  class="list-group-item"  ng-repeat="people in contacts| filter:searchContact" ng-class="{Selected: item.checked}" >
+									<div ng-click="createMember(people.email)"  > 
+									<input type="checkbox" ng-model="item.checked" >{{people.email}}</div>
+								
+								</div>
+
+							</div>
+
+							<!--group name input box  -->
+							<div class="contactlist" ng-show="showNameInput">
+								<input type="text" data-ng-model="group" >
+								<button ng-click="createGroup()">finish</button>
+								
+							</div>
+
+							<!--make group button  -->
+							<div ng-show="showMakeGroup">
+								<button type="button" class="btn btn-primary buttn" ng-click="showContacts()">makeGroup</button>
+							</div>
+
+						</div>
+
+
+					
+		</div>
+     
+    
+  </tabset>
+<!-- <div class="glyphicon glyphicon-backward"></div>
+								<div class="glyphicon glyphicon-forward"></div> -->
+
+
+
+<div>
+
+</div>
+
+
+
+
+
+
+</div><!-- left side div -->
+
+
+
+<div class="containerchatdiv">
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  </div> <!--  container-->
+    
+     
+     
+     
+     
+     
+     
+     
+     
+
+
+
+  
+  </body>
+</html>
